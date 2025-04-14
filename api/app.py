@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from datetime import datetime
-
+from serverless_wsgi import handle_request
 app = Flask(__name__)
 
 # Initialize RAG components
@@ -580,3 +580,6 @@ def workout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+def handler(event, context):
+    return handle_request(app, event, context)
