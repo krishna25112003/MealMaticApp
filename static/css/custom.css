@@ -1,0 +1,111 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Smaller and Sleek Navbar */
+.custom-navbar {
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    color: #000000;
+}
+
+.navbar .btn {
+    margin-left: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: black; /* Changed button color to black */
+    color: white; /* Button text color */
+    border-color: #000000;
+}
+
+/* Header Section with Background Image and Gradient */
+ 
+
+/* Welcome Text */
+.welcome-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold weight */
+    font-size: 2.5rem; /* Adjust size as needed */
+    z-index: 2; /* Ensure text appears above the gradient */
+    margin-bottom: 20px;
+}
+
+/* Other Styles */
+h2 {
+    font-size: 2rem;
+    color: #343a40;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li i {
+    color: #28a745;
+    margin-right: 10px;
+}
+
+/* Footer with black gradient */
+footer {
+    background: linear-gradient(135deg, #000000, #434343); /* Black gradient for footer */
+    color: white; /* Footer text color */
+    padding: 15px 0; /* Padding for footer */
+    margin-top: 20px; /* Space between footer and content */
+}
+
+/* Animation on scroll */
+.animate__fadeInLeft,
+.animate__fadeInRight,
+.animate__fadeInUp {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    transition: all 1s ease;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Sliding Animation */
+.sliding-card {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start lower */
+    animation: slideIn 0.5s forwards; /* Animation properties */
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1; /* Fade in */
+        transform: translateY(0); /* Move to original position */
+    }
+}
+
+/* Card styles */
+.card {
+    background: #ffffff; /* White background for the card */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
