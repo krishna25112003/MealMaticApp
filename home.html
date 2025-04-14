@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MealMatic App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #333333;
+            --text-color: #333333;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            max-width: 100%;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .app-container {
+            max-width: 414px;
+            margin: 0 auto;
+            background-color: var(--white);
+            min-height: 100vh;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Header/Navbar */
+        .app-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .app-header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .app-header button {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .hero-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-section p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        /* How It Works */
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .step-content p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Benefits List */
+        .benefits-list {
+            list-style-type: none;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefits-list i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Workout Section */
+        .workout-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .workout-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .workout-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .workout-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        /* Footer */
+        .app-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Image styling */
+        .section-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Animation classes */
+        .animate-in {
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 414px;
+            margin: 0 auto;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+        
+        .nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- App Header -->
+        <header class="app-header">
+            <h1>MealMatic</h1>
+            <button><i class="fas fa-bars"></i></button>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero-section animate__animated animate__fadeIn">
+            <h2 class="animate__animated animate__fadeInDown">Meal & Workout Planner</h2>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">Fuel your fitness with personalized nutrition</p>
+            <a href="{{ url_for('generate') }}" class="btn-primary animate__animated animate__fadeIn animate__delay-2s">Get Meal Plan</a>
+        </section>
+        
+        <!-- Workout Section -->
+        <section class="section">
+            <h2 class="section-title">Today's Workout</h2>
+            <div class="workout-card animate-in">
+                <h3>Full Body Circuit</h3>
+                <p>A balanced workout targeting all major muscle groups to complement your meal plan.</p>
+                <div class="workout-meta">
+                    <span><i class="fas fa-clock"></i> 45 mins</span>
+                    <span><i class="fas fa-fire"></i> 350 kcal</span>
+                </div>
+            </div>
+            
+            <div class="workout-card animate-in" style="animation-delay: 0.2s;">
+                <h3>Core Strengthening</h3>
+                <p>Essential core exercises to improve posture and support your fitness goals.</p>
+                <div class="workout-meta">
+                    <span><i class="fas fa-clock"></i> 20 mins</span>
+                    <span><i class="fas fa-fire"></i> 150 kcal</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="section">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="feature-card animate-in">
+                <div class="feature-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Personalized Meals</h3>
+                <p>Custom meal plans tailored to your body type and fitness goals.</p>
+            </div>
+            
+            <div class="feature-card animate-in" style="animation-delay: 0.2s;">
+                <div class="feature-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>Workout Integration</h3>
+                <p>Nutrition plans that complement your workout routine.</p>
+            </div>
+            
+            <div class="feature-card animate-in" style="animation-delay: 0.4s;">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Track Progress</h3>
+                <p>Monitor your fitness and nutrition results over time.</p>
+            </div>
+        </section>
+        
+        <!-- How It Works -->
+        <section class="section">
+            <h2 class="section-title">How It Works</h2>
+            
+            <div class="step animate-in">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Input Your Details</h3>
+                    <p>Enter your stats, fitness level, and dietary preferences.</p>
+                </div>
+            </div>
+            
+            <div class="step animate-in" style="animation-delay: 0.2s;">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Get Your Plan</h3>
+                    <p>Receive customized meal and workout plans.</p>
+                </div>
+            </div>
+            
+            <div class="step animate-in" style="animation-delay: 0.4s;">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>See Results</h3>
+                    <p>Follow your plan and track your progress.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="section" style="text-align: center; padding-bottom: 70px;">
+            <a href="{{ url_for('generate') }}" class="btn-primary" style="display: inline-block; margin-top: 20px; background-color: var(--primary-color); color: var(--white);">Get Your Meal Plan</a>
+        </section>
+        
+        <!-- App Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2024 MealMatic. All rights reserved.</p>
+        </footer>
+        
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="{{ url_for('workout') }}"  class="nav-item">
+                <i class="fas fa-dumbbell"></i>
+                <span>Workout</span>
+            </a>
+            <a href="{{ url_for('generate') }}" class="nav-item">
+                <i class="fas fa-utensils"></i>
+                <span>Meals</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        // Simple animation trigger as elements come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
+            });
+            
+            // Set active nav item based on current page
+            const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+            document.querySelectorAll('.nav-item').forEach(item => {
+                const href = item.getAttribute('href');
+                if (href && href.includes(currentPage)) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
